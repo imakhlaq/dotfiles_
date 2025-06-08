@@ -366,6 +366,10 @@ sudo usermod -a -G video "$USER"
 echo "Enabling Bluetooth..."
 sudo systemctl enable bluetooth.service
 
+# Enable Bluetooth
+echo "Enabling NewtworkManager..."
+sudo systemctl enable NetworkManager
+
 # Configure Waybar
 echo "Configuring Waybar..."
 mkdir -p ~/.config/waybar
