@@ -122,9 +122,9 @@ window#waybar.empty #window {
     background-color: alpha(@surface_dim, 0.9);
 }
 
-#language {
+/* #language {
     font-family: "MesloLGS Nerd Font";
-}
+} */
 
 tooltip {
     min-height: 0;
