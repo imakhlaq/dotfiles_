@@ -70,7 +70,7 @@
     },
     "clock": {
         "interval": 1,
-        "format": "{:%A, %T}",
+        "format": "{:%A, %I:%M %p}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click": "swaync-client -t -sw",
         "calendar": {
