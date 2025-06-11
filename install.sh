@@ -366,9 +366,13 @@ sudo usermod -a -G video "$USER"
 echo "Enabling Bluetooth..."
 sudo systemctl enable bluetooth.service
 
-# Enable Bluetooth
+# Enable Network Manager
 echo "Enabling NewtworkManager..."
 sudo systemctl enable NetworkManager
+
+# Enable Power Profiles
+echo "Enabling Power Profiles..."
+sudo systemctl enable --now power-profiles-daemon.service
 
 # Configure Waybar
 echo "Configuring Waybar..."
