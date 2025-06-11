@@ -109,7 +109,7 @@ EOL
 
 # Packages to install
 PACKAGES=(
-    micro wl-clipboard os-prober kitty hyprland power-profiles-daemon qt5-graphicaleffects
+    micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
     qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth
     ttf-firacode-nerd ttf-jetbrains-mono-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber
     xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct
@@ -122,7 +122,7 @@ PACKAGES=(
     network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha
     kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle
     python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
-    libreoffice-fresh evince gnome-clocks 7zip unrar swww imagemagick
+    evince gnome-clocks 7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
     gst-plugins-ugly pkgconf vim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
@@ -136,7 +136,7 @@ PACKAGES=(
 # AUR packages to install
 YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
-    wlogout github-desktop auto-cpufreq
+    wlogout github-desktop auto-cpufreq power-profiles-daemon
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
