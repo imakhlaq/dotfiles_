@@ -53,3 +53,20 @@ You may want to replace the file `~/.config/hypr/profile-picture.png` by your ow
 ![Preview4](previews/4.png)
 ![Preview5](previews/5.png)
 ![Preview6](previews/6.png)
+
+
+## Configure high-performance mode
+
+Enable the `power-profiles-daemon` using:
+
+```
+sudo systemctl enable --now power-profiles-daemon.service
+```
+
+This will allow you to choose between balanced, power-saver and performance modes using a button
+at the top-left of the bar to control power consumption. If unneccessary on a desktop, remove the
+module from the bar and control it through the command line with:
+
+```
+powerprofilesctl set performance
+```
