@@ -54,3 +54,12 @@ output_path = "~/.config/Kvantum/matugen/matugen.kvconfig"
 [templates.accent-color]
 input_path = "~/.config/matugen/templates/accent-color"
 output_path = "~/.cache/wal/accent-color"
+
+# Neovim & Nvchad (uncomment if you use NvChad)
+#[templates.neovim-nvchad]
+#input_path = '~/.config/matugen/templates/nvchad-colors.lua'
+#output_path = '~/.cache/wal/base46-dark.lua'
+#
+#[templates.neovim-nvchad-colors]
+#input_path = '~/.config/matugen/templates/nvchad-colors'
+#output_path = '~/.cache/wal/colors'
