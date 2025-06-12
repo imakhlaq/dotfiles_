@@ -124,7 +124,7 @@ PACKAGES=(
     python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
     evince gnome-clocks 7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
-    gst-plugins-ugly pkgconf vim fzf reflector zoxide wget
+    gst-plugins-ugly pkgconf neovim fzf reflector zoxide wget
     zenity baobab gnome-font-viewer unzip ttf-ubuntu-font-family
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
@@ -165,7 +165,7 @@ GAMING_PACKAGES_YAY=(
 
 # Akhlaq packages to install
 AKHLAQ_PACKAGES_YAY=(
-    intellij-idea-ultimate-edition amazon-corretto-21-bin nodejs-lts-jod pnpm protontricks
+    intellij-idea-ultimate-edition amazon-corretto-21-bin nodejs-lts-jod pnpm docker
 )
 
 echo "Installing Akhlaq's dotfiles..."
@@ -461,6 +461,11 @@ if ask_yes_no "Are you imakhlaq?(packages that i use in my day to life.)"; then
     echo "Downloading imakhlaq packages..."
     sudo pacman -S --needed "${AKHLAQ_PACKAGES_YAY[@]}"
     yay -S --needed "${AKHLAQ_PACKAGES_YAY[@]}"
+    sudo systemctl start docker
+    sudo systemctl enable docker
+    newgrp docker
+    sudo usermod -a -G docker "$USER"
+    sudo usermod -aG docker $(whoami)
 else
     echo "Skipping imakhlaq packages."
 fi
