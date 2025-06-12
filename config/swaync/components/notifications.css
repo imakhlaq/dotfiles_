@@ -1,3 +1,11 @@
+/*
+┏┏ ┏━┃━┏┛┏━┛┏━┃┛┏━┃┃    ┃ ┃┏━┃┃ ┃  ┏━┛┏━┛┏━┛
+┃┃┃┏━┃ ┃ ┏━┛┏┏┛┃┏━┃┃  ━┛━┏┛┃ ┃┃ ┃  ┃  ━━┃━━┃
+┛┛┛┛ ┛ ┛ ━━┛┛ ┛┛┛ ┛━━┛   ┛ ━━┛━━┛  ━━┛━━┛━━┛
+
+# -- To learn how to make something like this yourself, check out https://sane1090x.gumroad.com/l/hypraccelerator -- #
+*/
+
 @define-color text            @on_surface;
 @define-color background-alt  @surface_bright;
 @define-color selected        @primary;

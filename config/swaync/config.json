@@ -1,54 +1,129 @@
 {
-    "$schema": "/etc/xdg/swaync/configSchema.json",
-    "positionX": "left",
-    "positionY": "top",
-    "control-center-margin-top": 8,
-    "control-center-margin-bottom": 8,
-    "control-center-margin-right": 8,
-    "control-center-margin-left": 8,
-    "notification-icon-size": 48,
-    "notification-body-image-height": 100,
-    "notification-body-image-width": 200,
-    "timeout": 5,
-    "timeout-low": 5,
-    "timeout-critical": 20,
-    "fit-to-screen": true,
-    "control-center-width": 350,
-    "notification-window-width": 350,
-    "keyboard-shortcuts": true,
-    "image-visibility": "when-available",
-    "transition-time": 200,
-    "hide-on-clear": false,
-    "hide-on-action": true,
-    "script-fail-notify": true,
-    "widgets": [
-        "title",
-        "dnd",
-        "notifications",
-        "mpris"
-    ],
-    "widget-config": {
-        "title": {
-            "text": "󰂚   Notifications",
-            "clear-all-button": true,
-            "button-text": "󰎟"
-        },
-        "dnd": {
-            "text": "Do Not Disturb"
-        },
-        "label": {
-            "max-lines": 1,
-            "text": "Notification Center"
-        },
-        "mpris": {
-            "image-size": 96,
-            "image-radius": 10
-        }
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "left",
+  "positionY": "top",
+  "layer": "overlay",
+  "cssPriority": "application",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "control-center-margin-top": 8,
+  "control-center-margin-bottom": 8,
+  "control-center-margin-right": 8,
+  "control-center-margin-left": 8,
+  "notification-icon-size": 48,
+  "notification-2fa-action": true,
+  "notification-inline-replies": true,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
+  "timeout": 5,
+  "timeout-low": 5,
+  "timeout-critical": 20,
+  "fit-to-screen": true,
+  "control-center-width": 450,
+  "notification-window-width": 450,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+  "widgets": [
+    "mpris",
+    "dnd",
+    "title",
+    "notifications",
+    "volume",
+    "backlight",
+    "buttons-grid"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "󰂚   Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟"
     },
-    "scripts": {
-        "notification-controller": {
-            "exec": "zsh /home/reyshyram/.config/swaync/notification-controller.sh",
-            "app-name": ".*"
+    "label": {
+      "max-lines": 1,
+      "text": "Notification Center"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+
+    "mpris": {
+      "image-size": 80,
+      "image-radius": 0
+    },
+    "volume": {
+      "label": "󰕾 "
+    },
+    "backlight": {
+      "label": "󰃟 "
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰝟",
+          "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+          "type": "toggle"
+        },
+        {
+          "label": "󰍭",
+          "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+          "type": "toggle"
+        },
+
+        {
+          "label": "",
+          "command": "kitty nmtui"
+        },
+        {
+          "label": "",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "󰤄",
+          "command": "swaync-client -d",
+          "type": "toggle"
+        },
+
+        {
+          "label": "󰀟",
+          "command": "gnome-network-displays"
+        },
+
+        {
+          "label": "󰈙",
+          "command": "kitty bash -i -c 'Docs'"
+        },
+        {
+          "label": "",
+          "command": "kitty bash -i -c 'Settings'"
+        },
+        {
+          "label": "",
+          "command": "kitty bash -i -c 'tasks'"
+        },
+        {
+          "label": "",
+          "command": "hyprlock"
+        },
+        {
+          "label": "",
+          "command": "reboot"
+        },
+        {
+          "label": "",
+          "command": "shutdown now"
         }
+      ]
     }
+  },
+
+  "scripts": {
+    "notification-controller": {
+      "exec": "zsh /home/imakhlaq/.config/swaync/notification-controller.sh",
+      "app-name": ".*"
+    }
+  }
 }
