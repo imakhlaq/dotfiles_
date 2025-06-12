@@ -1,30 +1,34 @@
-
 # Installation
 
->[!CAUTION]
->The installation script is meant to be used on a minimal Arch installation, and will install refind as the boot manager. It will replace any existing configuration. Please proceed with caution.
+> [!CAUTION]
+> The installation script is meant to be used on a minimal Arch installation, and will install refind as the boot manager. It will replace any existing configuration. Please proceed with caution.
 
 First, update your system.
+
 ```
 sudo pacman -Syu
 ```
 
 Then, install git.
+
 ```
 sudo pacman -S git
 ```
 
 After that, you can now clone the repository:
+
 ```
-git clone https://github.com/Reyshyram/Dotfiles.git
+git clone https://github.com/imakhlaq/dotfiles_.git
 ```
 
 Then, cd into the directory containing the dotfiles:
+
 ```
 cd Dotfiles
 ```
 
 Finally, make sure the install script has the required permissions and launch it.
+
 ```
 chmod +x ./install.sh && ./install.sh
 ```
@@ -47,13 +51,13 @@ You can modify your display settings using the nwg-displays app.
 You may want to replace the file `~/.config/hypr/profile-picture.png` by your own profile picture.
 
 # Preview
+
 ![Preview](previews/1.png)
 ![Preview2](previews/2.png)
 ![Preview3](previews/3.png)
 ![Preview4](previews/4.png)
 ![Preview5](previews/5.png)
 ![Preview6](previews/6.png)
-
 
 ## Configure high-performance mode
 
