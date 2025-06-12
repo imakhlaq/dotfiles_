@@ -109,7 +109,7 @@ EOL
 
 # Packages to install
 PACKAGES=(
-    micro wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
+    wl-clipboard os-prober kitty hyprland qt5-graphicaleffects
     qt5-quickcontrols2 qt5-svg noto-fonts noto-fonts-cjk fastfetch plymouth
     ttf-firacode-nerd ttf-jetbrains-mono-nerd zsh qt5-wayland qt6-wayland pipewire wireplumber
     xdg-desktop-portal-hyprland pacman-contrib btop nwg-look qt5ct qt6ct
