@@ -97,4 +97,8 @@ bindkey "^[[6~" history-search-forward # Page down
 # Pywal
 (cat ~/.cache/wal/sequences &)
 
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto/
+export PATH="$PATH:$JAVA_HOME/bin"
+
 export PATH=$PATH:/home/reyshyram/.spicetify

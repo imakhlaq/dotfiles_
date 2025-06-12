@@ -1,5 +1,6 @@
 * {
   font-size: 15px;
+  font-weight: bold;
   /* FiraMono is my font of choice, the Propo version is required to align
        icons correctly. 
        NOTE : Add to dependency otf-codenewroman-nerd
@@ -11,17 +12,34 @@
   border: none;
   box-shadow: none;
   outline: none;
-  color: @on_surface;
 }
 @import "colors.css";
 
 window#waybar {
-  background-color: transparent;
+  all: unset;
 }
 
 window#waybar.hidden {
   opacity: 0.2;
 }
+
+/* --- Module island settings --- */
+.modules-left,
+.modules-right,
+.modules-center {
+  padding: 7px;
+  margin: 0 15px;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+.modules-left,
+.modules-right {
+  color: @on_surface;
+}
+
+/* --- Tooltip settings --- */
 /* Clear default GTK styling. */
 tooltip * {
   padding: 0;
@@ -31,38 +49,40 @@ tooltip * {
   background-color: transparent;
 }
 tooltip {
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: 18px;
-  background-color: alpha(@surface_dim, 0.32);
+  color: @on_surface;
+  background: alpha(@background, 0.4);
+  /* border: 2px solid @primary; */
+  border-radius: 10px;
 }
 
 tooltip label {
-  padding: 8px;
+  color: @on_surface;
+  padding: 5px;
 }
 
-/* Default styling for module sections. */
-.modules-left,
-.modules-right,
-.modules-center {
-  padding: 7px;
-  border-radius: 10px;
-  background: @blur_background;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+/* --- Separator --- */
+#custom-separator {
+  padding: 0 10px 0 15px;
+  color: alpha(@on_surface, 0.7);
 }
 
-.modules-left,
-.modules-center {
-  margin: 10px 0px 5px 10px;
-}
-.modules-right {
-  margin: 10px 10px 5px 0px;
-}
-#custom-notification {
+/* --- Modules --- */
+#bluetooth,
+#pulseaudio,
+#network,
+#custom-weather,
+#battery,
+#power-profiles-daemon,
+#custom-notification,
+#clock,
+#custom-pacman,
+#custom-media {
   padding: 0px 5px;
   transition: all 0.3s ease;
+  color: @on_surface;
 }
 
+/* when hoverd */
 #clock:hover,
 #custom-notification:hover,
 #custom-updates:hover,
@@ -76,42 +96,12 @@ tooltip label {
 #idle_inhibitor:hover,
 #network:hover,
 #bluetooth:hover,
-#custom-wlogout:hover {
-  color: @primary_fixed_dim;
-}
-
-/* Remove margin if first or last */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
-
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
-
-/* Don't show window's name if there's not one */
-window#waybar.empty #window {
-  background-color: transparent;
-  border: none;
-}
-
-/* Don't show window's name if there's not one */
-window#waybar.empty #window {
-  background-color: transparent;
-  border: none;
-}
-
-/* when hoverd */
-#clock:hover,
+#custom-wlogout:hover,
 #custom-pacman:hover,
-#custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover {
+#custom-expand:hover,
+#custom-settings:hover {
   transition: all 0.3s ease;
+  color: @primary_fixed_dim;
 }
 
 /* Customize each module */
@@ -133,73 +123,65 @@ window#waybar.empty #window {
 
 #custom-wlogout {
   color: @error;
-  font-size: 16px;
-  margin-right: 0px;
-  margin-left: 0px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding-left: 8px;
+  margin: 0 5px;
 }
 
 /* Workspaces */
+/* --- Workspace settings --- */
 #workspaces {
   padding: 0px 5px;
 }
+
 #workspaces button {
   all: unset;
   padding: 0px 5px;
-  color: alpha(@primary_fixed_dim, 0.4);
+  color: alpha(@on_primary, 0.4);
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
   color: rgba(0, 0, 0, 0);
   border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
   transition: all 1s ease;
 }
 
 #workspaces button.active {
-  color: @primary_fixed_dim;
+  color: @on_primary;
   border: none;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
-/* #workspaces button.empty {
+
+#workspaces button.empty {
   color: rgba(0, 0, 0, 0);
-  background: @surface_container_lowest;
   border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
-} */
+}
+
 #workspaces button.empty:hover {
   color: rgba(0, 0, 0, 0);
   border: none;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
   transition: all 1s ease;
 }
-/* #workspaces button.empty.active {
-  color: @primary_container;
+
+#workspaces button.empty.active {
+  color: @on_surface;
   border: none;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-} */
-
-#bluetooth,
-#battery,
-#group-expand {
-  padding: 0px 5px;
-  transition: all 0.3s ease;
 }
 
-#network {
-  padding: 0px 5px;
-  transition: all 0.3s ease;
-}
-
+/* --- Battery --- */
 #battery.charging {
-  color: #26a65b;
+  color: @tertiary;
 }
 
 #battery.warning:not(.charging) {
-  color: #ffbe61;
+  color: @error;
+}
+
+#battery.critical:not(.charging) {
+  color: @error_container;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #battery.critical:not(.charging) {
@@ -219,31 +201,28 @@ window#waybar.empty #window {
 #custom-expand,
 #custom-settings {
   padding: 0px 5px;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+  color: alpha(@on_surface, 0.9);
   transition: all 0.3s ease;
 }
-#custom-expand:hover,
-#custom-settings:hover {
-  color: rgba(255, 255, 255, 0.2);
-  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
-}
+
 #custom-colorpicker {
   padding: 0px 5px;
 }
+/* --- Stats --- */
 #cpu,
 #memory,
 #temperature {
   padding: 0px 5px;
   transition: all 0.3s ease;
+  color: @on_surface;
 }
-#custom-endpoint {
-  color: transparent;
-  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-}
+
+/* --- Tray --- */
 #tray {
   padding: 0px 5px;
   transition: all 0.3s ease;
 }
+
 #tray menu * {
   padding: 0px 5px;
   transition: all 0.3s ease;

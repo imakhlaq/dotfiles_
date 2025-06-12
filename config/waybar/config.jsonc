@@ -2,13 +2,14 @@
   // sourced from header module //
   "layer": "top",
   "position": "top",
+  "margin-top": 5,
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
 
   "modules-left": [
-    "custom/logo",
+    //"custom/logo",
     "custom/notification",
     "clock",
     "group/settings"
@@ -17,26 +18,30 @@
   "modules-right": [
     "mpris",
     "group/expand",
-    "backlight",
+    "pulseaudio",
     "bluetooth",
     "network",
     "battery"
-
-    // "idle_inhibitor",
   ],
 
-  //left
-  "custom/logo": {
-    "format": "  ",
-    "on-click": "kitty -T fetch --hold fastfetch",
-    "tooltip": false
-  },
   "custom/notification": {
+    "tooltip-format": "Open Overwatch",
     "tooltip": false,
-    "format": "",
+    "format": "",
     "on-click": "swaync-client -t -sw",
     "escape": true
   },
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": " {alt}",
+    "format-alt-click": "click",
+    "interval": 3600,
+    "return-type": "json",
+    "exec": "$HOME/.config/waybar/scripts/get-weather.sh",
+    "exec-if": "ping wttr.in -c1",
+    "tooltip": true
+  },
+
   "clock": {
     "interval": 1,
     "format": "{:%A, %I:%M %p}",
@@ -61,12 +66,12 @@
 
   "custom/settings": {
     "format": "󰬫",
-    "tooltip": false
+    "tooltip-format": "Expand drawer..."
   },
   "group/settings": {
     "orientation": "horizontal",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 600,
       "transition-left-to-right": false,
       "click-to-reveal": true
     },
@@ -74,10 +79,11 @@
       "custom/settings",
       "custom/endpoint",
       "tray",
+      "wlr/taskbar",
       "custom/endpoint",
-      "pulseaudio",
-      "custom/endpoint",
-      "custom/pacman"
+      "custom/pacman",
+      "custom/weather",
+      "power-profiles-daemon"
     ]
   },
 
@@ -85,24 +91,41 @@
     "icon-size": 12,
     "spacing": 8
   },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 12,
+    "space": 8,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": ["Alacritty", "kitty"],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
   "pulseaudio": {
     "scroll-step": 5,
-    "format": "{volume}% {icon}  {format_source}",
-    "format-bluetooth": "{volume}% {icon}  {format_source}",
-    "format-bluetooth-muted": "󰖁 {icon}  {format_source}",
-    "format-muted": "󰖁  {format_source}",
+    "format": "{icon}",
+    "format-alt": "{volume}% {icon}",
+    "format-muted": "󰖁",
     "format-source": "",
+    "ignored-sinks": ["Easy Effects Sink"],
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
-      "hands-free": "",
-      "headset": "",
+      "headset": "󱡏",
       "phone": "",
       "portable": "",
       "car": "",
       "default": [" ", " ", " "]
     },
-    "on-click": "pavucontrol -t 3"
+    "on-click": "pavucontrol -t 3",
+    "tooltip-format": "Volume: {volume}%"
   },
 
   "custom/pacman": {
@@ -115,10 +138,18 @@
     "tooltip": false
   },
 
-  //middleq
+  //middle
   "hyprland/workspaces": {
-    "format": "{id}",
-    "active-only": true
+    "format": "{icon}",
+    "active-only": true,
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
   },
 
   //right
@@ -129,12 +160,12 @@
   },
   "custom/expand": {
     "format": "󰬩",
-    "tooltip": false
+    "tooltip-format": "Expand drawer..."
   },
   "group/expand": {
     "orientation": "horizontal",
     "drawer": {
-      "transition-duration": 500,
+      "transition-duration": 600,
       "transition-to-left": true,
       "click-to-reveal": true
     },
@@ -143,6 +174,7 @@
       "cpu",
       "memory",
       "temperature",
+      "backlight",
       "custom/wlogout",
       "custom/endpoint"
     ]
@@ -179,17 +211,25 @@
   "bluetooth": {
     "format-on": "󰂯",
     "format-disabled": "󰂲",
-    "format-off": "󰂲",
-    "format-connected": "󰂯",
-    "on-click": "blueman-manager"
+    "format-connected": "󰂱",
+    "format-connected-battery": "{icon}",
+    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click-right": "blueman-manager"
   },
   "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-disconnected": "",
-    "tooltip-format-disconnected": "Error",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} 🖧 ",
+    "interface": "wlo1",
+    "format-alt": "{essid} {icon}",
+    "format-wifi": "{icon}",
+    "format-wifi-alt": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "max-length": 50,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format": "Connected to {essid}\nStrength: {signalStrength}%",
     "on-click": "kitty nmtui"
   },
   "battery": {
@@ -199,10 +239,21 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "{capacity}% {icon}",
+    "format-alt": "{capacity}% {icon}",
+    "format": "{icon}",
     "format-charging": "{capacity}% 󰂄",
     "format-plugged": "{capacity}% 󰂄 ",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰁻", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"]
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power mode: {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "󰠠",
+      "balanced": "󰚀",
+      "power-saver": "󰌪"
+    }
   }
 }

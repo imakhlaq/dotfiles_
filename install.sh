@@ -119,8 +119,8 @@ PACKAGES=(
     networkmanager pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse
     gst-plugin-pipewire slurp noto-fonts-emoji firewalld
     waybar xdg-desktop-portal-gtk bluez bluez-utils blueman
-    network-manager-applet pavucontrol ttf-meslo-nerd gnome-keyring kooha
-    kvantum-qt5 gnome-disk-utility firefox swaync hyprlock hypridle
+    network-manager-applet pavucontrol ttf-meslo-nerd otf-codenewroman-nerd gnome-keyring kooha
+    kvantum-qt5 gnome-disk-utility swaync hyprlock hypridle
     python-pipx pcmanfm-qt ark cpio meson cmake hyprwayland-scanner man
     evince gnome-clocks 7zip unrar swww imagemagick
     gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good
@@ -129,19 +129,19 @@ PACKAGES=(
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
-    nwg-displays gdb refind rofi-wayland
+    nwg-displays gdb refind rofi-wayland yazi
     qt6-virtualkeyboard qt6-multimedia-ffmpeg
 )
 
 # AUR packages to install
 YAY_PACKAGES=(
     bibata-cursor-theme visual-studio-code-bin gapless hardcode-fixer-git
-    wlogout github-desktop auto-cpufreq power-profiles-daemon
+    wlogout auto-cpufreq power-profiles-daemon
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
     python-screeninfo python-imageio matugen-bin
-    python-materialyoucolor xwaylandvideobridge pinta
+    python-materialyoucolor xwaylandvideobridge pinta brave-bin
 )
 
 # Gaming packages to install
@@ -163,7 +163,12 @@ GAMING_PACKAGES_YAY=(
     vkbasalt lib32-vkbasalt proton-ge-custom dxvk-bin vesktop protontricks
 )
 
-echo "Installing Reyshyram's dotfiles..."
+# Akhlaq packages to install
+AKHLAQ_PACKAGES_YAY=(
+    intellij-idea-ultimate-edition amazon-corretto-21-bin nodejs-lts-jod pnpm protontricks
+)
+
+echo "Installing Akhlaq's dotfiles..."
 
 # Enhance git
 echo "Enhancing git..."
@@ -396,10 +401,9 @@ cp -r ./config/clipse ~/.config/
 echo "Configuring Waypaper..."
 cp -r ./config/waypaper ~/.config/
 
-# Configure Ulauncher
-echo "Configuring Ulauncher..."
-systemctl --user enable --now ulauncher
-cp -r ./config/ulauncher ~/.config/
+# Configure rofi
+echo "Configuring rofi..."
+cp -r ./config/rofi ~/.config/
 
 # Configure color scheme
 echo "Configuring wallpaper color scheme..."
@@ -450,6 +454,15 @@ if ask_yes_no "Would you like to download additional gaming packages?"; then
     yay -S --needed "${GAMING_PACKAGES_YAY[@]}"
 else
     echo "Skipping gaming packages."
+fi
+
+# Install Akhlaq packages if user agrees
+if ask_yes_no "Are you imakhlaq?(packages that i use in my day to life.)"; then
+    echo "Downloading imakhlaq packages..."
+    sudo pacman -S --needed "${AKHLAQ_PACKAGES_YAY[@]}"
+    yay -S --needed "${AKHLAQ_PACKAGES_YAY[@]}"
+else
+    echo "Skipping imakhlaq packages."
 fi
 
 # Ask about restart

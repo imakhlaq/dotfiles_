@@ -1,9 +1,10 @@
-@import 'colors.css';
+@import "colors.css";
+@import "components/notifications.css";
+@import "components/control-center.css";
+
 @define-color text @on_surface;
 @define-color background @surface_dim;
 @define-color background-alt alpha(@primary_fixed_dim, 0.4);
 @define-color selected @primary_fixed_dim;
 @define-color hover alpha(@selected, 0.5);
 @define-color urgent @error;
-@import 'notifications.css';
-@import 'central_control.css';
