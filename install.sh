@@ -129,7 +129,7 @@ PACKAGES=(
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
-    nwg-displays gdb refind
+    nwg-displays gdb refind rofi-wayland
     qt6-virtualkeyboard qt6-multimedia-ffmpeg
 )
 
@@ -140,7 +140,7 @@ YAY_PACKAGES=(
     hyprpicker grimblast-git aurutils arch-update 
     python-pywal16 smile clipse swayosd-git waypaper
     ttf-meslo-nerd-font-powerlevel10k python-haishoku dopamine-appimage-preview
-    python-screeninfo python-imageio ulauncher-git matugen-bin
+    python-screeninfo python-imageio matugen-bin
     python-materialyoucolor xwaylandvideobridge pinta
 )
 
