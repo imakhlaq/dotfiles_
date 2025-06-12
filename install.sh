@@ -129,7 +129,7 @@ PACKAGES=(
     python-pillow python-scikit-learn python-numpy curl
     qt6-5compat qt6-declarative qt6-svg openrgb bc wlr-randr
     adw-gtk-theme libadwaita wl-clip-persist zip
-    nwg-displays gdb refind rofi-wayland yazi
+    nwg-displays gdb refind rofi-wayland yazi uwsm
     qt6-virtualkeyboard qt6-multimedia-ffmpeg
 )
 
