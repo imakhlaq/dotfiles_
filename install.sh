@@ -463,7 +463,7 @@ if ask_yes_no "Are you imakhlaq?(packages that i use in my day to life.)"; then
     yay -S --needed "${AKHLAQ_PACKAGES_YAY[@]}"
     sudo systemctl start docker
     sudo systemctl enable docker
-    newgrp docker
+    sudo groupadd docker
     sudo usermod -a -G docker "$USER"
     sudo usermod -aG docker $(whoami)
 else
