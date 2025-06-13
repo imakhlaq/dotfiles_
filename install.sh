@@ -165,7 +165,7 @@ GAMING_PACKAGES_YAY=(
 
 # Akhlaq packages to install
 AKHLAQ_PACKAGES_YAY=(
-    intellij-idea-ultimate-edition amazon-corretto-21-bin nodejs-lts-jod pnpm docker
+    intellij-idea-ultimate-edition amazon-corretto-21-bin go nodejs-lts-jod pnpm docker
 )
 
 echo "Installing Akhlaq's dotfiles..."
